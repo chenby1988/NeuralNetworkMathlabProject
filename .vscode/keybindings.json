@@ -1,0 +1,16 @@
+[
+    {
+        "key": "ctrl+f5",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.focus",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": { "text": "main\n" }
+                }
+            ]
+        },
+        "when": "editorLangId == matlab"
+    }
+]

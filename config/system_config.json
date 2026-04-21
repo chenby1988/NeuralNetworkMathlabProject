@@ -1,0 +1,87 @@
+{
+  "system": {
+    "name": "NN_Sim_Pro",
+    "version": "2.0.0",
+    "log_level": "DEBUG",
+    "log_dir": "logs",
+    "artifact_dir": "artifacts",
+    "report_dir": "reports"
+  },
+  "data": {
+    "default_source": "generator",
+    "sources": ["csv", "excel", "mat", "generator"],
+    "validation": {
+      "check_missing": true,
+      "check_outliers": true,
+      "outlier_threshold": 3.0,
+      "min_samples": 50,
+      "max_samples": 100000,
+      "normalize_method": "zscore"
+    },
+    "split": {
+      "train_ratio": 0.7,
+      "val_ratio": 0.15,
+      "test_ratio": 0.15,
+      "random_seed": 42
+    }
+  },
+  "model": {
+    "default_type": "feedforwardnet",
+    "hidden_layers": [20, 15],
+    "activation": "tansig",
+    "training": {
+      "algorithm": "trainlm",
+      "max_epochs": 1000,
+      "goal": 1e-06,
+      "min_grad": 1e-07,
+      "learning_rate": 0.01,
+      "lr_decay": 0.95,
+      "lr_decay_epochs": 50,
+      "early_stop": {
+        "enabled": true,
+        "patience": 20,
+        "min_delta": 1e-05
+      },
+      "checkpoint": {
+        "enabled": true,
+        "interval_epochs": 100,
+        "keep_best_only": false
+      }
+    },
+    "regularization": {
+      "l2_lambda": 0.001,
+      "dropout_rate": 0.0
+    }
+  },
+  "evaluation": {
+    "metrics": ["mse", "rmse", "mae", "r2", "mape"],
+    "cross_validation": {
+      "enabled": true,
+      "k_folds": 5
+    },
+    "robustness": {
+      "enabled": true,
+      "noise_levels": [0.05, 0.1, 0.2, 0.3]
+    }
+  },
+  "hyperparam_search": {
+    "enabled": true,
+    "method": "bayesian",
+    "max_iterations": 30,
+    "search_space": {
+      "hidden_layers": [[10], [20], [10, 10], [20, 15], [30, 20, 10]],
+      "learning_rate": [0.001, 0.01, 0.05],
+      "l2_lambda": [0, 0.0001, 0.001, 0.01]
+    }
+  },
+  "gui": {
+    "enabled": true,
+    "refresh_interval": 2,
+    "plot_history_length": 500
+  },
+  "security": {
+    "encryption_enabled": false,
+    "access_control_enabled": false,
+    "audit_enabled": true
+  }
+}

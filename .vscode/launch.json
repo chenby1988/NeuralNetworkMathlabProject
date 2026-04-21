@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Main (MATLAB Extension)",
+            "type": "matlab",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.m",
+            "stopOnEntry": false
+        },
+        {
+            "name": "Run Main (Command Line)",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "C:/Program Files/MATLAB/R2021b/bin/matlab.exe",
+            "runtimeArgs": [
+                "-batch",
+                "cd('${workspaceFolder}'); main;"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}

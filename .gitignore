@@ -1,0 +1,22 @@
+# MATLAB generated files
+*.asv
+*.mex*
+*.p
+*.slx.autosave
+*.slx.original
+
+# Generated artifacts (runtime)
+logs/
+artifacts/
+reports/
+
+# VS Code settings (optional, keep if you want shared config)
+# .vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.temp
